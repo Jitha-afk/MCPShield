@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 import { cn } from '../lib/utils'
 import { Navbar } from '../components/navbar'
+import UnicornStudio from '../components/unicorn-studio'
 
 export const metadata: Metadata = {
   title: 'MCP Shield – Secure Your MCP Calls',
@@ -29,7 +30,19 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={cn('min-h-screen flex flex-col bg-background font-sans text-foreground')}> 
         <Navbar />
         <main className="flex-1">{children}</main>
-        <footer className="py-8 text-center text-sm text-muted-foreground border-t border-border">© {new Date().getFullYear()} MCP Shield.</footer>
+        <footer className="relative w-full overflow-hidden border-t border-border">
+          {/* Background visual */}
+          <div className="absolute inset-0 -z-10">
+            <UnicornStudio
+              projectId="ov3DHYiPO44KYDqNVNV1"
+              className="w-full h-full"
+              height="100%"
+            />
+          </div>
+          <div className="py-8 text-center text-sm text-muted-foreground backdrop-blur-sm/30 bg-background/60">
+            © {new Date().getFullYear()} Made with ❤️ for Microsoft Global Hackathon by MCP Shield Team.
+          </div>
+        </footer>
       </body>
     </html>
   )

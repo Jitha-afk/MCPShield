@@ -6,19 +6,23 @@ interface UnicornStudioProps {
   className?: string
   /** Optional override for container height (default 100vh) */
   height?: string
+  /** Force calling init again even if already initialized */
+  forceReinit?: boolean
 }
 
 // Lightweight loader that injects unicornstudio script once and renders a full-size container.
 export default function UnicornStudio({
   projectId = 'iUBa2FcBKKlYpnFPBfB9',
   className = '',
-  height = '100vh'
+  height = '100vh',
+  forceReinit = false
 }: UnicornStudioProps) {
   const initializedRef = useRef(false)
   const containerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    if (initializedRef.current) return
+    // Allow re-init if explicitly requested
+    if (initializedRef.current && !forceReinit) return
     initializedRef.current = true
     if (!(window as any).UnicornStudio) {
       ;(window as any).UnicornStudio = { isInitialized: false }
@@ -26,7 +30,7 @@ export default function UnicornStudio({
       scriptEl.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js'
       scriptEl.onload = () => {
         const us = (window as any).UnicornStudio
-        if (!us.isInitialized && typeof us.init === 'function') {
+        if ((!us.isInitialized || forceReinit) && typeof us.init === 'function') {
           us.init()
           us.isInitialized = true
         }
@@ -34,12 +38,12 @@ export default function UnicornStudio({
       ;(document.head || document.body).appendChild(scriptEl)
     } else {
       const us = (window as any).UnicornStudio
-      if (!us.isInitialized && typeof us.init === 'function') {
-        us.init()
+      if ((forceReinit || !us.isInitialized) && typeof us.init === 'function') {
+        try { us.init() } catch (e) { /* swallow */ }
         us.isInitialized = true
-      }
+      } 
     }
-  }, [])
+  }, [forceReinit])
 
   return (
     <div
