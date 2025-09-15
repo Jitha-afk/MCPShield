@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+/* Updated design token sets */
+:root {
+  --background: #f4f4f8;
+  --foreground: #19171c;
+  --card: #ffffff;
+  --card-foreground: #19171c;
+  --popover: #ffffff;
+  --popover-foreground: #19171c;
+  --primary: #d263a7;
+  --primary-foreground: #ffffff;
+  --secondary: #2a3851;
+  --secondary-foreground: #ffffff;
+  --muted: #e5e4e7;
+  --muted-foreground: #75717a;
+  --accent: #e9ab5c;
+  --accent-foreground: #ffffff;
+  --destructive: #f09443;
+  --destructive-foreground: #ffffff;
+  --border: #e5e4e7;
+  --input: #e5e4e7;
+  --ring: #d263a7;
+  --chart-1: #d263a7;
+  --chart-2: #e9ab5c;
+  --chart-3: #81b898;
+  --chart-4: #2a3851;
+  --chart-5: #4673ba;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #19171c;
+  --sidebar-primary: #d263a7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e5e4e7;
+  --sidebar-accent-foreground: #19171c;
+  --sidebar-border: #e5e4e7;
+  --sidebar-ring: #d263a7;
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: monospace;
+  --radius: 0.5rem;
+  --shadow-2xs: 0px 2px 8px -2px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0px 2px 8px -2px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0px 2px 8px -2px hsl(0 0% 0% / 0.10), 0px 1px 2px -3px hsl(0 0% 0% / 0.10);
+  --shadow: 0px 2px 8px -2px hsl(0 0% 0% / 0.10), 0px 1px 2px -3px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0px 2px 8px -2px hsl(0 0% 0% / 0.10), 0px 2px 4px -3px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0px 2px 8px -2px hsl(0 0% 0% / 0.10), 0px 4px 6px -3px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0px 2px 8px -2px hsl(0 0% 0% / 0.10), 0px 8px 10px -3px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0px 2px 8px -2px hsl(0 0% 0% / 0.25);
+  --tracking-normal: 0px;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: #1a202f;
+  --foreground: #f8f8fc;
+  --card: #21293c;
+  --card-foreground: #f8f8fc;
+  --popover: #21293c;
+  --popover-foreground: #f8f8fc;
+  --primary: #d263a7;
+  --primary-foreground: #ffffff;
+  --secondary: #4673ba;
+  --secondary-foreground: #19171c;
+  --muted: #2a3851;
+  --muted-foreground: #a5a1aa;
+  --accent: #e9ab5c;
+  --accent-foreground: #ffffff;
+  --destructive: #7f4b1d;
+  --destructive-foreground: #ffffff;
+  --border: #2a3851;
+  --input: #2a3851;
+  --ring: #d263a7;
+  --chart-1: #d263a7;
+  --chart-2: #e9ab5c;
+  --chart-3: #81b898;
+  --chart-4: #4673ba;
+  --chart-5: #e0f60a;
+  --sidebar: #1a202f;
+  --sidebar-foreground: #f8f8fc;
+  --sidebar-primary: #d263a7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2a3851;
+  --sidebar-accent-foreground: #f8f8fc;
+  --sidebar-border: #2a3851;
+  --sidebar-ring: #d263a7;
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: monospace;
+  --radius: 0.5rem;
+  --shadow-2xs: 0px 4px 12px -4px hsl(0 0% 0% / 0.13);
+  --shadow-xs: 0px 4px 12px -4px hsl(0 0% 0% / 0.13);
+  --shadow-sm: 0px 4px 12px -4px hsl(0 0% 0% / 0.25), 0px 1px 2px -5px hsl(0 0% 0% / 0.25);
+  --shadow: 0px 4px 12px -4px hsl(0 0% 0% / 0.25), 0px 1px 2px -5px hsl(0 0% 0% / 0.25);
+  --shadow-md: 0px 4px 12px -4px hsl(0 0% 0% / 0.25), 0px 2px 4px -5px hsl(0 0% 0% / 0.25);
+  --shadow-lg: 0px 4px 12px -4px hsl(0 0% 0% / 0.25), 0px 4px 6px -5px hsl(0 0% 0% / 0.25);
+  --shadow-xl: 0px 4px 12px -4px hsl(0 0% 0% / 0.25), 0px 8px 10px -5px hsl(0 0% 0% / 0.25);
+  --shadow-2xl: 0px 4px 12px -4px hsl(0 0% 0% / 0.63);
+}
+
+body {
+  letter-spacing: var(--tracking-normal);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg,#d263a7,#e9ab5c,#4673ba);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Testimonial marquee animations */
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 60s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 69s linear infinite;
+}
+
+/* Prefer-reduced-motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-left, .marquee-right { animation: none; }
+}
+
+/* Testimonial card base style tweaks */
+.testimonial-card-shadow {
+  box-shadow: var(--shadow-sm);
+}
