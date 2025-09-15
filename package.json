@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "lint": "npm run lint --prefix frontend",
+    "export": "npm run postexport --prefix frontend"
+  },
+  "dependencies": {
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "gsap": "^3.13.0",
+    "lucide-react": "^0.544.0"
+  }
+}
