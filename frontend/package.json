@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next build && node scripts/post-export.js",
     "lint": "next lint",
     "postexport": "node scripts/post-export.js"
   },
