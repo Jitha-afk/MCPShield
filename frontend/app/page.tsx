@@ -50,7 +50,7 @@ export default function HomePage() {
             { title: 'Policy Engine', body: 'Declarative rules for blocking, redacting, or sandboxing suspicious flows.' },
             { title: 'Copilot+ Ready', body: 'Optimized for upcoming NPU accelerated scenarios on Windows.' },
           ].map(card => (
-            <div key={card.title} className="p-6 rounded-xl border border-border/60 bg-card text-card-foreground shadow-sm">
+            <div key={card.title} className="p-6 rounded-xl border border-border bg-card text-card-foreground shadow-sm">
               <h3 className="font-semibold mb-2">{card.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{card.body}</p>
             </div>

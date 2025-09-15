@@ -51,7 +51,7 @@ function Row({ testimonials, direction }: { testimonials: Testimonial[]; directi
         {list.map((t, i) => (
           <Card
             key={i}
-            className="w-72 flex-shrink-0 transition-shadow hover:shadow-md hover:ring-1 hover:ring-border/60 bg-card text-card-foreground"
+            className="w-72 flex-shrink-0 transition-shadow hover:shadow-md hover:ring-1 hover:ring-border bg-card text-card-foreground border border-border"
           >
             <CardContent className="p-4">
               <p className="text-sm leading-relaxed mb-3 text-muted-foreground">“{t.quote}”</p>
@@ -75,7 +75,7 @@ export default function TestimonialsMarquee() {
     <section className="relative py-24 select-none" id="testimonials">
       <div className="container mb-10">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">What builders are saying</h2>
-        <p className="text-muted-foreground mt-2 max-w-2xl text-sm md:text-base">Adopters across security, platform, and AI teams use MCP Shield to safely accelerate agent-driven products.</p>
+        <p className="text-muted-foreground mt-2 max-w-2xl text-sm md:text-base">Adopters across security, platform, and AI teams use MCP Shield to safely<br></br>accelerate agent-driven products.</p>
       </div>
       <div className="space-y-6">
         <Row testimonials={testimonialsRowA} direction="left" />
