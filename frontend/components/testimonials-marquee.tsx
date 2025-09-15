@@ -51,10 +51,10 @@ function Row({ testimonials, direction }: { testimonials: Testimonial[]; directi
         {list.map((t, i) => (
           <Card
             key={i}
-            className="w-72 flex-shrink-0 transition-shadow hover:shadow-md hover:ring-1 hover:ring-border/60 bg-white dark:bg-[#21293c] text-card-foreground dark:text-card-foreground"
+            className="w-72 flex-shrink-0 transition-shadow hover:shadow-md hover:ring-1 hover:ring-border/60 bg-card text-card-foreground"
           >
             <CardContent className="p-4">
-              <p className="text-sm leading-relaxed mb-3 text-muted-foreground dark:text-muted-foreground">“{t.quote}”</p>
+              <p className="text-sm leading-relaxed mb-3 text-muted-foreground">“{t.quote}”</p>
               <div className="text-xs font-medium">
                 <span>{t.name}</span>
                 <span className="text-muted-foreground"> · {t.role}</span>
