@@ -14,7 +14,9 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+/# Python site-packages or build libs (keep root only, not frontend/lib)
+/lib/
+!frontend/lib/
 lib64/
 parts/
 sdist/
