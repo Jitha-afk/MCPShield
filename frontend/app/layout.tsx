@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               height="100%"
             />
             {/* Bottom overlay text */}
-            <div className="absolute inset-x-0 bottom-0 py-6 text-center text-sm text-muted-foreground bg-background/55 backdrop-blur-sm">
+            <div className="absolute inset-x-0 bottom-0 py-6 text-center text-sm text-popover-foreground bg-popover/65 backdrop-blur-sm">
               © {new Date().getFullYear()} Made with ❤️ for Microsoft Global Hackathon by MCP Shield Team.
             </div>
           </div>
