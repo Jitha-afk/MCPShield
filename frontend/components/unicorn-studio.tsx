@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 interface UnicornStudioProps {
   projectId?: string
   className?: string
+  /** Optional override for container height (default 100vh) */
   height?: string
 }
 
@@ -21,19 +22,19 @@ export default function UnicornStudio({
     initializedRef.current = true
     if (!(window as any).UnicornStudio) {
       ;(window as any).UnicornStudio = { isInitialized: false }
-      const s = document.createElement('script')
-      s.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js'
-      s.onload = () => {
+      const scriptEl = document.createElement('script')
+      scriptEl.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js'
+      scriptEl.onload = () => {
         const us = (window as any).UnicornStudio
-        if (!us.isInitialized && us.init) {
+        if (!us.isInitialized && typeof us.init === 'function') {
           us.init()
           us.isInitialized = true
         }
       }
-      document.head.appendChild(s)
+      ;(document.head || document.body).appendChild(scriptEl)
     } else {
       const us = (window as any).UnicornStudio
-      if (!us.isInitialized && us.init) {
+      if (!us.isInitialized && typeof us.init === 'function') {
         us.init()
         us.isInitialized = true
       }
