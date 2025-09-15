@@ -1,3 +1,4 @@
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -274,3 +275,4 @@ storybook-static/
 
 # NOTE: Existing pattern 'lib/' (from Python template) will also ignore 'frontend/lib/'.
 # If you intend to track 'frontend/lib', replace 'lib/' with a more specific path (e.g. '/lib/' or remove it).
+
