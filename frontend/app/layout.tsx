@@ -30,17 +30,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={cn('min-h-screen flex flex-col bg-background font-sans text-foreground')}> 
         <Navbar />
         <main className="flex-1">{children}</main>
-        <footer className="relative w-full overflow-hidden border-t border-border">
-          {/* Background visual */}
-          <div className="absolute inset-0 -z-10">
+        <footer className="relative w-full border-t border-border flex justify-center">
+          {/* Wrapper enforces fixed design-size canvas */}
+          <div className="relative" style={{ width: '1990px', height: '1206px' }}>
             <UnicornStudio
               projectId="ov3DHYiPO44KYDqNVNV1"
-              className="w-full h-full"
+              className="absolute inset-0 w-full h-full"
               height="100%"
             />
-          </div>
-          <div className="py-8 text-center text-sm text-muted-foreground backdrop-blur-sm/30 bg-background/60">
-            © {new Date().getFullYear()} Made with ❤️ for Microsoft Global Hackathon by MCP Shield Team.
+            {/* Bottom overlay text */}
+            <div className="absolute inset-x-0 bottom-0 py-6 text-center text-sm text-muted-foreground bg-background/55 backdrop-blur-sm">
+              © {new Date().getFullYear()} Made with ❤️ for Microsoft Global Hackathon by MCP Shield Team.
+            </div>
           </div>
         </footer>
       </body>
