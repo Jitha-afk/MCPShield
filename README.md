@@ -1,22 +1,48 @@
+
 <!-- Banner image placeholder: add assets/mcp-shield-banner.png before publishing -->
-![MCP Shield banner](assets/mcp-shield-banner.png)
+![MCP Shield banner](assets/mcp-shield-banner.gif)
+
+<div align="center" style="margin-bottom: 2em;">
+  
+  <img src="assets/mcp-shield-banner.gif" alt="MCP Shield" width="600" />
+  
+  <h1 align="center" style="font-size:2.5rem; font-weight:800; margin: 1.5em 0 0.5em 0; letter-spacing: -1px; color: #0ea5e9; text-shadow: 0 2px 16px #0ea5e9aa;">🚨 MCP Shield: Experience the Future of AI Security 🚨</h1>
+  
+  <p align="center" style="font-size:1.25rem; color:#444; margin-bottom:1.5em;">
+    <strong>Ready to see agent-aware firewalls in action? Dive in below!</strong>
+  </p>
+  
+  <a href="https://jitha-afk.github.io/MCPShield/" target="_blank" style="text-decoration:none;">
+    <img src="https://img.shields.io/badge/🌐%20Explore%20Landing%20Page-0ea5e9?style=for-the-badge&logo=vercel&logoColor=white" alt="Landing Page" style="margin:0.5em;"/>
+  </a>
+  <a href="https://innovationstudio.microsoft.com/hackathons/hackathon2025/project/95945" target="_blank" style="text-decoration:none;">
+    <img src="https://img.shields.io/badge/💬%20Like%20the%20Idea%3F%20Leave%20a%20Comment-0ea5e9?style=for-the-badge&logo=microsoft&logoColor=white" alt="Leave a Comment" style="margin:0.5em;"/>
+  </a>
+  
+  <br/>
+  <br/>
+  <sub style="color:#888;">✨ <b>Scroll down for the story, demo, and how to get involved!</b> ✨</sub>
+</div>
+
 
 # MCP Shield
 
 **Microsoft Global Hackathon 2025 – An agent-aware firewall for the Model Context Protocol era**
 
 ## Table of Contents
-- [Problem Statement](#problem-statement)
-- [Idea / Solution](#idea--solution)
-- [Dependencies / Limitations](#dependencies--limitations)
-- [Future Scope](#future-scope)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installing](#installing)
-- [Usage](#usage)
-- [Built With](#built-with)
-- [Team](#team)
-- [Acknowledgments](#acknowledgments)
+- [MCP Shield](#mcp-shield)
+  - [Table of Contents](#table-of-contents)
+  - [Problem Statement](#problem-statement)
+  - [Idea / Solution](#idea--solution)
+  - [Dependencies / Limitations](#dependencies--limitations)
+  - [Future Scope](#future-scope)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installing](#installing)
+  - [Usage](#usage)
+  - [Built With](#built-with)
+  - [Team](#team)
+  - [Acknowledgments](#acknowledgments)
 
 ## Problem Statement
 
