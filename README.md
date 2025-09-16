@@ -1,6 +1,6 @@
 <div align="center" style="margin-bottom: 2em;">
   
-  <img src="assets/mcp-shield-banner.gif" alt="MCP Shield" width="600" loop=infinite/>
+  <img src="assets/mcp-shield-banner.gif" alt="MCP Shield" loop=infinite/>
   
   <h1 align="center" style="font-size:2.5rem; font-weight:800; margin: 1.5em 0 0.5em 0; letter-spacing: -1px; color: #0ea5e9; text-shadow: 0 2px 16px #0ea5e9aa;">🚨 MCP Shield: Experience the Future of AI Security 🚨</h1>
   
