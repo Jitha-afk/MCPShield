@@ -4,8 +4,11 @@ import gsap from 'gsap'
 import { Button } from '../components/ui/button'
 import TestimonialsMarquee from '../components/testimonials-marquee'
 import UnicornStudio from '../components/unicorn-studio'
+import LoadingGate from '../components/loading-gate'
+import { useState } from 'react'
 
 export default function HomePage() {
+  const [shaderReady, setShaderReady] = useState(false)
   const heroRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -43,11 +46,12 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div ref={heroRef}>
+    <div ref={heroRef} className="relative">
+      <LoadingGate ready={shaderReady} />
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col overflow-hidden">
   {/* Unicorn Studio full-screen canvas (updated project) */}
-  <UnicornStudio projectId="dDwz2YDuLTupUpCRhONo" className="absolute inset-0 -z-10" height="100%" />
+  <UnicornStudio onReady={() => setShaderReady(true)} projectId="dDwz2YDuLTupUpCRhONo" className="absolute inset-0 -z-10" height="100%" />
         {/* Content anchored near bottom-left with generous whitespace */}
         <div className="container flex flex-1 items-end pb-24 md:pb-28">
           <div className="max-w-4xl space-y-8" data-animate-wrapper>

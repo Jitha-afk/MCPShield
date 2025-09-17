@@ -8,6 +8,8 @@ interface UnicornStudioProps {
   height?: string
   /** Force calling init again even if already initialized */
   forceReinit?: boolean
+  /** Callback invoked once the unicorn studio project is considered ready (script loaded + init called). */
+  onReady?: () => void
 }
 
 // Lightweight loader that injects unicornstudio script once and renders a full-size container.
@@ -15,7 +17,8 @@ export default function UnicornStudio({
   projectId = 'iUBa2FcBKKlYpnFPBfB9',
   className = '',
   height = '100vh',
-  forceReinit = false
+  forceReinit = false,
+  onReady
 }: UnicornStudioProps) {
   const initializedRef = useRef(false)
   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -31,8 +34,11 @@ export default function UnicornStudio({
       scriptEl.onload = () => {
         const us = (window as any).UnicornStudio
         if ((!us.isInitialized || forceReinit) && typeof us.init === 'function') {
-          us.init()
-          us.isInitialized = true
+            try { us.init() } catch (e) { /* swallow */ }
+            us.isInitialized = true
+            onReady?.()
+        } else {
+            onReady?.()
         }
       }
       ;(document.head || document.body).appendChild(scriptEl)
@@ -41,9 +47,14 @@ export default function UnicornStudio({
       if ((forceReinit || !us.isInitialized) && typeof us.init === 'function') {
         try { us.init() } catch (e) { /* swallow */ }
         us.isInitialized = true
+        onReady?.()
       } 
+      else {
+        // already initialized
+        onReady?.()
+      }
     }
-  }, [forceReinit])
+  }, [forceReinit, onReady])
 
   return (
     <div
