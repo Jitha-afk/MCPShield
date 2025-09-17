@@ -19,14 +19,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(()=>{try{const t=localStorage.getItem('theme');if(t==='light'){document.documentElement.classList.remove('dark')}else{document.documentElement.classList.add('dark')}}catch(e){document.documentElement.classList.add('dark')}})();`
-          }}
-        />
-      </head>
+    <html lang="en" className="dark">
+      <head />
       <body className={cn('min-h-screen flex flex-col bg-background font-sans text-foreground')}> 
         <Navbar />
         <main className="flex-1">{children}</main>

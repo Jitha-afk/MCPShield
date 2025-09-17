@@ -1,14 +1,20 @@
 import * as React from "react";
 import { cn } from "../../lib/utils";
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+interface CardProps extends React.ComponentProps<'div'> {
+  variant?: 'default' | 'solid';
+}
+
+function Card({ className, variant = 'default', ...props }: CardProps) {
+  const base = "flex flex-col gap-4 rounded-xl border border-border/60 shadow-sm";
+  const variants: Record<string,string> = {
+    default: "bg-card text-card-foreground backdrop-blur-sm/0",
+    solid: "bg-background/95 text-card-foreground", // slightly more opaque / solid look
+  };
   return (
     <div
       data-slot="card"
-      className={cn(
-        "bg-card text-card-foreground flex flex-col gap-4 rounded-xl border border-border/60 shadow-sm",
-        className
-      )}
+      className={cn(base, variants[variant] ?? variants.default, className)}
       {...props}
     />
   );
