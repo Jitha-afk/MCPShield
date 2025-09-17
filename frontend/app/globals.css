@@ -218,3 +218,29 @@ body {
 .animate-fade-in-up {
   animation: fade-in-up 0.7s ease-out both;
 }
+
+/* Subtle attractor glow for primary CTA */
+@keyframes cta-glow-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(245 221 197 / 0.55), 0 0 0 0 rgba(245 221 197 / 0.25); }
+  40% { box-shadow: 0 0 0 4px rgba(245 221 197 / 0.0), 0 0 14px 4px rgba(245 221 197 / 0.35); }
+  70% { box-shadow: 0 0 0 2px rgba(245 221 197 / 0.15), 0 0 10px 3px rgba(245 221 197 / 0.25); }
+  100% { box-shadow: 0 0 0 0 rgba(245 221 197 / 0.0), 0 0 0 0 rgba(245 221 197 / 0.0); }
+}
+
+.cta-glow {
+  position: relative;
+  isolation: isolate;
+  animation: cta-glow-pulse 3.8s ease-in-out infinite;
+  will-change: box-shadow;
+  transition: transform 0.35s ease, background-color 0.35s ease;
+}
+
+.cta-glow:hover {
+  animation-play-state: paused;
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 0 0 2px rgba(245 221 197 / 0.5), 0 0 22px 6px rgba(245 221 197 / 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-glow { animation: none; }
+}
