@@ -98,7 +98,8 @@ export default function RoadmapAnimated({
           <Card
             key={p.label}
             data-roadmap-item
-            className={cn('group')}
+            variant="clean"
+            className={cn('group')} // using shadcn clean variant
           >
             <CardHeader className="space-y-2">
               <div className="flex items-center gap-2">
