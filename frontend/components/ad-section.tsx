@@ -90,10 +90,23 @@ export default function AdSection() {
     >
       {/* Background placeholder (future unicorn.studio interactive canvas) */}
       <div
-        className="absolute inset-0 -z-10 pointer-events-none"
+        className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center"
         data-role="unicorn-background-placeholder"
         aria-hidden="true"
-      />
+      >
+        {/* Unicorn.Studio embedded project placeholder */}
+        <div
+          data-us-project="6lp3CWaPgGAmuQXjiEOZ"
+          style={{ width: '100%', height: '100vh' }}
+          className="max-w-none"
+        />
+        <script
+          // Using dangerouslySetInnerHTML so we only inject once; init guard prevents duplicates
+          dangerouslySetInnerHTML={{
+            __html: `!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();`
+          }}
+        />
+      </div>
 
       <div className="container max-w-5xl mx-auto px-6 md:px-10 xl:px-16">
         <h2

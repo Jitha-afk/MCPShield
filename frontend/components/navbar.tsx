@@ -23,7 +23,7 @@ export function Navbar() {
               width={36}
               height={36}
               priority
-              className="rounded-sm shadow-sm ring-1 ring-border/40 transition-transform group-hover:rotate-[6deg] group-hover:scale-105"
+              className="rounded-sm shadow-sm transition-transform group-hover:rotate-[6deg] group-hover:scale-105"
             />
             <span className="text-lg md:text-xl gradient-text tracking-tight">MCP Shield</span>
           </Link>
