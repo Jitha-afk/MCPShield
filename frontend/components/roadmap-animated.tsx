@@ -98,7 +98,6 @@ export default function RoadmapAnimated({
           <Card
             key={p.label}
             data-roadmap-item
-            variant="solid"
             className={cn('group')}
           >
             <CardHeader className="space-y-2">

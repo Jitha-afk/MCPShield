@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, useCallback } from 'react';
+import { Loader2 } from 'lucide-react';
 
 /**
  * LoadingGate shows a full-screen video (mp4) until `ready` turns true OR a timeout elapses.
@@ -12,8 +13,6 @@ export interface LoadingGateProps {
   timeoutMs?: number;
   /** Minimum ms to keep the loader visible even if ready earlier */
   minDisplayMs?: number;
-  /** Path to the mp4 video asset (served from /public) */
-  videoSrc?: string;
   /** Optional className for root overlay */
   className?: string;
   /** Optional callback after fade out completes */
@@ -23,8 +22,8 @@ export interface LoadingGateProps {
 export default function LoadingGate({
   ready,
   timeoutMs = 10000,
-  minDisplayMs = 4000,
-  videoSrc = "/loading.mp4",
+  // Minimum display time now 0.5s for snappier entry
+  minDisplayMs = 750,
   className = "",
   onHide
 }: LoadingGateProps) {
@@ -64,17 +63,14 @@ export default function LoadingGate({
       onTransitionEnd={handleTransitionEnd}
       aria-hidden={!show}
     >
-      <video
-        className="h-full w-full object-cover"
-        src={videoSrc}
-        autoPlay
-        playsInline
-        muted
-        loop
-      />
-      {/* Optional simple progress spinner fallback (if video fails) */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs tracking-wide text-muted-foreground/70">
-        Loading experience...
+      <div className="flex flex-col items-center gap-5 select-none">
+        <div className="flex items-center justify-center relative">
+          <div className="absolute inset-0 animate-pulse rounded-full bg-primary/5" />
+          <Loader2 className="h-10 w-10 text-primary animate-spin-slow" strokeWidth={1.75} />
+        </div>
+        <div className="text-[11px] font-medium tracking-wide text-muted-foreground/70 animate-fade-in-up">
+          [Loading Experience.. ]
+        </div>
       </div>
     </div>
   );
