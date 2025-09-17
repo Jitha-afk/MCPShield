@@ -25,20 +25,20 @@ export interface RoadmapAnimatedProps {
 const DEFAULT_PHASES: RoadmapPhase[] = [
   {
     label: 'Alpha',
-    title: 'Inspection & Blocking',
+    title: 'Detection & Control',
     description: 'Local prompt stream inspection & rule based blocking.',
     status: 'in-progress'
   },
   {
     label: 'Beta',
-    title: 'Adaptive & Integrations',
-    description: 'Adaptive ML scoring, Windows service integration, telemetry opt-in.',
+    title: 'Adaptive & Integrated',
+    description: 'Adaptive and built into Windows service, telemetry opt-in.',
     status: 'upcoming'
   },
   {
     label: 'GA',
     title: 'Enterprise Depth',
-    description: 'Copilot+ deep hooks, enterprise policy packs, SOC integration.',
+    description: 'Copilot+ deep hooks, enterprise policy packs, integrated in your SOC.',
     status: 'upcoming'
   }
 ];
