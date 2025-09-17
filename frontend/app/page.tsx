@@ -84,7 +84,7 @@ export default function HomePage() {
                   {['For', 'Agent', 'Era'].map((word, wIdx) => (
                     <div
                       key={wIdx}
-                      className="overflow-hidden mr-4 last:mr-0 pt-1.5 pb-2 -my-2"
+                      className={`${word === 'Agent' ? 'mr-4 last:mr-0 pt-1.5 pb-2 -my-2' : 'overflow-hidden mr-4 last:mr-0 pt-1.5 pb-2 -my-2'}`}
                       aria-hidden="true"
                     >
                       <div className="inline-flex translate-y-[2px]">
