@@ -62,10 +62,10 @@ export default function HomePage() {
                   {['The', 'AI', 'Firewall,'].map((word, wIdx) => (
                     <div
                       key={wIdx}
-                      className="overflow-hidden mr-4 last:mr-0 pt-1 pb-1 -my-1"
+                      className="overflow-hidden mr-4 last:mr-0 pt-1.5 pb-2 -my-2"
                       aria-hidden="true"
                     >
-                      <div className="inline-flex">
+                      <div className="inline-flex translate-y-[6px]">
                         {Array.from(word).map((char, cIdx) => (
                           <span
                             key={cIdx}
@@ -84,10 +84,10 @@ export default function HomePage() {
                   {['For', 'Agent', 'Era'].map((word, wIdx) => (
                     <div
                       key={wIdx}
-                      className="overflow-hidden mr-4 last:mr-0 pt-1 pb-1 -my-1"
+                      className="overflow-hidden mr-4 last:mr-0 pt-1.5 pb-2 -my-2"
                       aria-hidden="true"
                     >
-                      <div className="inline-flex">
+                      <div className="inline-flex translate-y-[2px]">
                         {Array.from(word).map((char, cIdx) => (
                           <span
                             key={cIdx}
