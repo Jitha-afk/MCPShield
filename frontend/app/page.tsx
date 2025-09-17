@@ -85,7 +85,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 {/* Line 2 */}
-                <div className="flex flex-wrap">
+                <div className="flex flex-wrap text-accent">
                   {['For', 'Agent', 'Era'].map((word, wIdx) => (
                     <div
                       key={wIdx}
