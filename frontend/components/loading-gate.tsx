@@ -23,7 +23,7 @@ export default function LoadingGate({
   ready,
   timeoutMs = 10000,
   // Minimum display time now 0.5s for snappier entry
-  minDisplayMs = 750,
+  minDisplayMs = 900,
   className = "",
   onHide
 }: LoadingGateProps) {
@@ -59,17 +59,29 @@ export default function LoadingGate({
 
   return (
     <div
-      className={`pointer-events-none fixed inset-0 z-[999] flex items-center justify-center bg-background transition-opacity duration-700 ${show ? 'opacity-100' : 'opacity-0'} ${className}`}
+      className={`pointer-events-none fixed inset-0 z-[999] bg-black transition-opacity duration-700 ${show ? 'opacity-100' : 'opacity-0'} ${className}`}
       onTransitionEnd={handleTransitionEnd}
       aria-hidden={!show}
+      role="status"
     >
-      <div className="flex flex-col items-center gap-5 select-none">
-        <div className="flex items-center justify-center relative">
-          <div className="absolute inset-0 animate-pulse rounded-full bg-primary/5" />
-          <Loader2 className="h-10 w-10 text-primary animate-spin-slow" strokeWidth={1.75} />
+      {/* Centered Banner Image */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <img
+          src="/MCPShield-Banner-Dark.png"
+          alt="MCPShield Banner"
+          className="w-[720px] max-w-[85vw] select-none object-contain opacity-95"
+          draggable={false}
+        />
+      </div>
+
+      {/* Bottom Center Spinner + Text */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 select-none">
+        <div className="relative flex items-center justify-center">
+          <div className="absolute inset-0 animate-pulse rounded-full bg-primary/10" />
+            <Loader2 className="h-10 w-10 text-primary animate-spin-slow" strokeWidth={1.75} />
         </div>
-        <div className="text-[11px] font-medium tracking-wide text-muted-foreground/70 animate-fade-in-up">
-          [Loading Experience.. ]
+        <div className="text-[11px] font-medium tracking-wide text-muted-foreground/70 animate-fade-in-up" aria-live="polite">
+          [Loading Experience...]
         </div>
       </div>
     </div>
