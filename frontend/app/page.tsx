@@ -64,7 +64,7 @@ export default function HomePage() {
   {/* Hero background unicorn canvas (keep -z-10 so intermediate sections don't clip it) */}
   <UnicornStudio onReady={() => setShaderReady(true)} projectId="dDwz2YDuLTupUpCRhONo" className="absolute inset-0 -z-10" height="100%" />
         {/* Content anchored near bottom-left with generous whitespace */}
-        <div className="container flex flex-1 items-end pb-24 md:pb-28">
+  <div className="container flex flex-1 items-end pb-24 md:pb-28">
           <div className="max-w-4xl space-y-8" data-animate-wrapper>
             <h1
               className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]"

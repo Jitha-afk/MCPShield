@@ -14,6 +14,7 @@ const RAW_TEXT = `AI is the future.\nBut every future has threats.\n\nMCPShield 
 export default function AdSection() {
   const sectionRef = useRef<HTMLElement | null>(null)
 
+  // Animation effect
   useEffect(() => {
     if (!sectionRef.current) return
 
@@ -26,12 +27,10 @@ export default function AdSection() {
       const words = gsap.utils.toArray<HTMLElement>('[data-ad-word]')
       if (!words.length) return
 
-      // Break every word into characters (already split) and set base state.
       const chars = gsap.utils.toArray<HTMLElement>('[data-ad-char]')
       gsap.set(words, { y: 22, opacity: 0.12 })
       gsap.set(chars, { color: 'currentColor', opacity: 0.6 })
 
-      // Build a timeline where each word animates into place & recolors its chars.
       const tl = gsap.timeline({
         defaults: { ease: 'power2.out' },
         scrollTrigger: {
@@ -48,30 +47,25 @@ export default function AdSection() {
         const wordChars = Array.from(wordEl.querySelectorAll<HTMLElement>('[data-ad-char]'))
         const isPersistent = wordEl.dataset.persistent === 'true'
 
-        // Word entrance
         tl.to(wordEl, { y: 0, opacity: 1, duration: 0.4 }, i * 0.25)
 
-        // Character fill
         tl.to(wordChars, {
           color: 'var(--sidebar-accent)',
           stagger: 0.02,
           duration: 0.35,
           ease: 'none',
           onComplete: () => {
-            if (isPersistent) {
-              persistentSet.add(wordEl)
-            }
+            if (isPersistent) persistentSet.add(wordEl)
           }
         }, i * 0.25 + 0.1)
 
-        // Dim previous non-persistent word
         if (i > 0) {
           const prev = words[i - 1]
-          if (!persistentSet.has(prev) && prev.dataset.persistent !== 'true') {
-            const prevChars = Array.from(prev.querySelectorAll<HTMLElement>('[data-ad-char]'))
-            tl.to(prevChars, { color: 'currentColor', duration: 0.3, stagger: 0.005, ease: 'none' }, i * 0.25)
-            tl.to(prev, { opacity: 0.38, duration: 0.3 }, i * 0.25)
-          }
+            if (!persistentSet.has(prev) && prev.dataset.persistent !== 'true') {
+              const prevChars = Array.from(prev.querySelectorAll<HTMLElement>('[data-ad-char]'))
+              tl.to(prevChars, { color: 'currentColor', duration: 0.3, stagger: 0.005, ease: 'none' }, i * 0.25)
+              tl.to(prev, { opacity: 0.38, duration: 0.3 }, i * 0.25)
+            }
         }
       })
     }, sectionRef)
@@ -79,13 +73,51 @@ export default function AdSection() {
     return () => ctx.revert()
   }, [])
 
+  // Unicorn Studio script loader (client-only) to avoid SSR hydration mismatches
+  useEffect(() => {
+    const projectSelector = '[data-us-project]'
+    const projectEl = sectionRef.current?.querySelector(projectSelector)
+    if (!projectEl) return
+
+    const globalAny = window as any
+    const init = () => {
+      if (globalAny.__UNICORN_INITIALIZED) return
+      if (globalAny.UnicornStudio) {
+        try {
+          globalAny.UnicornStudio.init()
+          globalAny.__UNICORN_INITIALIZED = true
+        } catch (e) {
+          // swallow; can retry later if needed
+        }
+      }
+    }
+
+    if (globalAny.UnicornStudio) {
+      init()
+      return
+    }
+
+    // Load external script once
+    const existing = document.querySelector('script[data-unicorn-loader]') as HTMLScriptElement | null
+    if (existing) {
+      existing.addEventListener('load', init, { once: true })
+      return
+    }
+    const s = document.createElement('script')
+    s.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js'
+    s.async = true
+    s.dataset.unicornLoader = 'true'
+    s.addEventListener('load', init, { once: true })
+    document.head.appendChild(s)
+  }, [])
+
   const lines = RAW_TEXT.split('\n')
 
   return (
     <section
       ref={sectionRef}
-    id="ad"
-    className="relative min-h-screen py-24 w-full flex items-center justify-center"
+      id="ad"
+      className="relative min-h-screen py-24 w-full flex items-center justify-center"
       aria-labelledby="ad-heading"
     >
       {/* Background placeholder (future unicorn.studio interactive canvas) */}
@@ -94,17 +126,11 @@ export default function AdSection() {
         data-role="unicorn-background-placeholder"
         aria-hidden="true"
       >
-        {/* Unicorn.Studio embedded project placeholder */}
+        {/* Unicorn.Studio embedded project placeholder (script loaded client-side in effect) */}
         <div
           data-us-project="6lp3CWaPgGAmuQXjiEOZ"
           style={{ width: '100%', height: '100vh' }}
           className="max-w-none"
-        />
-        <script
-          // Using dangerouslySetInnerHTML so we only inject once; init guard prevents duplicates
-          dangerouslySetInnerHTML={{
-            __html: `!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();`
-          }}
         />
       </div>
 

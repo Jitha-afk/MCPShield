@@ -12,8 +12,8 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     }
 
     const lenis = new Lenis({
-      smoothWheel: true,
-      smoothTouch: false,
+      // smoothWheel retained; smoothTouch removed (no longer in LenisOptions typings)
+      smoothWheel: false,
       duration: 1.0,
     });
 
