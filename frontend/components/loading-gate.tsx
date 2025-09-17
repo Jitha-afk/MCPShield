@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState, useCallback } from 'react';
 import { Loader2 } from 'lucide-react';
+import Image from 'next/image';
+import Banner from '../public/MCPShield-Banner-Dark.png';
 
 /**
  * LoadingGate shows a full-screen video (mp4) until `ready` turns true OR a timeout elapses.
@@ -64,14 +66,17 @@ export default function LoadingGate({
       aria-hidden={!show}
       role="status"
     >
-      {/* Centered Banner Image */}
+      {/* Centered Banner Image (using next/image for basePath compatibility) */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <img
-          src="/MCPShield-Banner-Dark.png"
-          alt="MCPShield Banner"
-          className="w-[720px] max-w-[85vw] select-none object-contain opacity-95"
-          draggable={false}
-        />
+        <div className="w-[720px] max-w-[85vw] select-none opacity-95">
+          <Image
+            src={Banner}
+            alt="MCPShield Banner"
+            priority
+            className="h-auto w-full object-contain"
+            sizes="(max-width: 800px) 85vw, 720px"
+          />
+        </div>
       </div>
 
       {/* Bottom Center Spinner + Text */}

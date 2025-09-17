@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import Logo3D from '../public/MCPShield 3D Logo Transparent.png'
 import { Button } from './ui/button'
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from './ui/navigation-menu'
 
@@ -18,7 +19,7 @@ export function Navbar() {
         <div className="flex items-center gap-2 font-semibold mr-6">
           <Link href="#" className="flex items-center gap-2 group">
             <Image
-              src="/MCPShield 3D Logo Transparent.png"
+              src={Logo3D}
               alt="MCP Shield 3D Logo"
               width={36}
               height={36}
