@@ -201,3 +201,20 @@ body {
 .testimonial-card-shadow {
   box-shadow: var(--shadow-sm);
 }
+
+/* Loading gate subtle animations */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3.2s linear infinite;
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s ease-out both;
+}
