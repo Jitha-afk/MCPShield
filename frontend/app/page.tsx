@@ -5,6 +5,7 @@ import { Button } from '../components/ui/button'
 import TestimonialsMarquee from '../components/testimonials-marquee'
 import UnicornStudio from '../components/unicorn-studio'
 import LoadingGate from '../components/loading-gate'
+import RoadmapAnimated from '../components/roadmap-animated'
 import { useState } from 'react'
 
 export default function HomePage() {
@@ -180,11 +181,7 @@ export default function HomePage() {
 
       <section id="roadmap" className="container py-24 scroll-mt-20">
         <h2 className="text-3xl md:text-4xl font-bold mb-10">Roadmap</h2>
-        <ol className="space-y-6 max-w-2xl">
-          <li className="border-l pl-4 border-primary/50"><span className="font-medium">Alpha:</span> Local prompt stream inspection & rule based blocking.</li>
-          <li className="border-l pl-4 border-primary/50"><span className="font-medium">Beta:</span> Adaptive ML scoring, Windows service integration, telemetry opt-in.</li>
-          <li className="border-l pl-4 border-primary/50"><span className="font-medium">GA:</span> Copilot+ deep hooks, enterprise policy packs, SOC integration.</li>
-        </ol>
+        <RoadmapAnimated />
       </section>
     </div>
   )
