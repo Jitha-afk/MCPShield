@@ -2,7 +2,7 @@
 import { useEffect, useState, useCallback } from 'react';
 
 /**
- * LoadingGate shows a full-screen video (webm) until `ready` turns true OR a timeout elapses.
+ * LoadingGate shows a full-screen video (mp4) until `ready` turns true OR a timeout elapses.
  * It fades out smoothly and then unmounts the overlay.
  */
 export interface LoadingGateProps {
@@ -12,7 +12,7 @@ export interface LoadingGateProps {
   timeoutMs?: number;
   /** Minimum ms to keep the loader visible even if ready earlier */
   minDisplayMs?: number;
-  /** Path to the webm video asset (served from /public) */
+  /** Path to the mp4 video asset (served from /public) */
   videoSrc?: string;
   /** Optional className for root overlay */
   className?: string;
@@ -24,7 +24,7 @@ export default function LoadingGate({
   ready,
   timeoutMs = 10000,
   minDisplayMs = 4000,
-  videoSrc = "/loading.webm",
+  videoSrc = "/loading.mp4",
   className = "",
   onHide
 }: LoadingGateProps) {
