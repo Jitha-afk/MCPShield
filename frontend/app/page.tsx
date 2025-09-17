@@ -1,11 +1,13 @@
 "use client"
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Button } from '../components/ui/button'
 import TestimonialsMarquee from '../components/testimonials-marquee'
 import UnicornStudio from '../components/unicorn-studio'
 import LoadingGate from '../components/loading-gate'
 import RoadmapAnimated from '../components/roadmap-animated'
+import AdSection from '../components/ad-section'
 import { useState } from 'react'
 
 export default function HomePage() {
@@ -16,6 +18,12 @@ export default function HomePage() {
     if (!heroRef.current) return
 
     const ctx = gsap.context(() => {
+      // Register plugins
+      // Ensure ScrollTrigger is registered once (idempotent)
+      if (!(gsap as any).registeredScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger)
+        ;(gsap as any).registeredScrollTrigger = true
+      }
       // Fade-up for general elements (excluding the headline now handled separately)
       gsap.from('[data-animate="fade-up"]', {
         y: 28,
@@ -25,7 +33,7 @@ export default function HomePage() {
         ease: 'power3.out'
       })
 
-      // Character headline animation
+  // Character headline animation
       const chars = gsap.utils.toArray<HTMLElement>('[data-headline-char]')
       if (chars.length) {
         // Set initial state (hidden below)
@@ -41,6 +49,34 @@ export default function HomePage() {
           delay: 0.1
         })
       }
+      // Scroll snapping between major sections
+      const snapSelector = '[data-snap-section]'
+      const getSections = () => gsap.utils.toArray<HTMLElement>(snapSelector)
+
+      const createSnap = () => {
+        const sections = getSections()
+        if (!sections.length) return
+        // Build dynamic snap points based on each section's top offset
+        const snapPoints = () => sections.map(s => s.offsetTop / ScrollTrigger.maxScroll(window))
+
+        ScrollTrigger.create({
+          trigger: heroRef.current!,
+          start: 'top top',
+          end: () => ScrollTrigger.maxScroll(window),
+          snap: (value) => {
+            // Snap to closest computed point
+            const points = snapPoints()
+            const closest = points.reduce((prev, curr) => Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev, points[0])
+            return closest
+          },
+          invalidateOnRefresh: true
+        })
+      }
+
+      createSnap()
+      // Recompute on refresh (layout changes / resize)
+      ScrollTrigger.addEventListener('refreshInit', () => {})
+      ScrollTrigger.refresh()
     }, heroRef)
 
     return () => ctx.revert()
@@ -50,7 +86,7 @@ export default function HomePage() {
     <div ref={heroRef} className="relative">
       <LoadingGate ready={shaderReady} />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col overflow-hidden">
+  <section data-snap-section className="relative min-h-screen flex flex-col overflow-hidden">
   {/* Unicorn Studio full-screen canvas (updated project) */}
   <UnicornStudio onReady={() => setShaderReady(true)} projectId="dDwz2YDuLTupUpCRhONo" className="absolute inset-0 -z-10" height="100%" />
         {/* Content anchored near bottom-left with generous whitespace */}
@@ -120,8 +156,14 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <TestimonialsMarquee />
-      <section id="features" className="container py-20 grid gap-12 md:gap-20 scroll-mt-20">
+  {/* Ad Section (between Hero and Testimonials) */}
+  <AdSection />
+      <section data-snap-section aria-label="Testimonials" className="min-h-screen flex items-center">
+        <div className="w-full">
+          <TestimonialsMarquee />
+        </div>
+      </section>
+      <section data-snap-section id="features" className="container py-20 grid gap-12 md:gap-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
         <h2 className="text-3xl md:text-4xl font-bold">What We Offer</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {[
@@ -137,7 +179,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="how-it-works" className="container py-20 scroll-mt-20">
+  <section data-snap-section id="how-it-works" className="container py-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">How It Works</h2>
         <ol className="grid gap-4 md:grid-cols-3">
           <li className="p-5 rounded-xl border border-border/60 bg-card/50">
@@ -155,7 +197,7 @@ export default function HomePage() {
         </ol>
       </section>
 
-      <section id="why" className="container py-20 scroll-mt-20">
+  <section data-snap-section id="why" className="container py-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">Why MCP Shield</h2>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="p-5 rounded-xl border border-border/60 bg-card/50">
@@ -169,7 +211,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="demo" className="container py-20 scroll-mt-20">
+  <section data-snap-section id="demo" className="container py-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Try MCP Shield</h2>
         <p className="text-sm md:text-base text-muted-foreground mb-6">
           Spin up a local adapter and see policy enforcement on sample tools.
@@ -179,7 +221,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="roadmap" className="container py-24 scroll-mt-20">
+  <section data-snap-section id="roadmap" className="container py-24 scroll-mt-20 min-h-screen flex flex-col justify-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-10">Roadmap</h2>
         <RoadmapAnimated />
       </section>
