@@ -33,13 +33,18 @@ export default function UnicornStudio({
       scriptEl.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js'
       scriptEl.onload = () => {
         const us = (window as any).UnicornStudio
-        if ((!us.isInitialized || forceReinit) && typeof us.init === 'function') {
+        const attemptInit = (attempt = 0) => {
+          if ((!us.isInitialized || forceReinit) && typeof us.init === 'function') {
             try { us.init() } catch (e) { /* swallow */ }
             us.isInitialized = true
             onReady?.()
-        } else {
+          } else if (!us.isInitialized && attempt < 3) {
+            setTimeout(() => attemptInit(attempt + 1), 250)
+          } else {
             onReady?.()
+          }
         }
+        attemptInit()
       }
       ;(document.head || document.body).appendChild(scriptEl)
     } else {
@@ -48,9 +53,7 @@ export default function UnicornStudio({
         try { us.init() } catch (e) { /* swallow */ }
         us.isInitialized = true
         onReady?.()
-      } 
-      else {
-        // already initialized
+      } else {
         onReady?.()
       }
     }

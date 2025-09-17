@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 import { cn } from '../lib/utils'
 import { Navbar } from '../components/navbar'
 import UnicornStudio from '../components/unicorn-studio'
+import SmoothScrollProvider from '../components/smooth-scroll-provider'
 
 export const metadata: Metadata = {
   title: 'MCP Shield – Secure Your MCP Calls',
@@ -27,7 +28,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head />
       <body className={cn('min-h-screen flex flex-col bg-background font-sans text-foreground')}> 
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <SmoothScrollProvider>
+          <main className="flex-1">{children}</main>
+        </SmoothScrollProvider>
         <footer className="relative w-full border-t border-border flex justify-center">
           {/* Wrapper enforces fixed design-size canvas */}
           <div className="relative" style={{ width: '1990px', height: '1206px' }}>
