@@ -9,33 +9,103 @@ export default function HomePage() {
   const heroRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    if (heroRef.current) {
-      const ctx = gsap.context(() => {
-        gsap.from('[data-animate="fade-up"]', { y: 28, opacity: 0, stagger: 0.15, duration: 0.9, ease: 'power3.out' })
-      }, heroRef)
-      return () => ctx.revert()
-    }
+    if (!heroRef.current) return
+
+    const ctx = gsap.context(() => {
+      // Fade-up for general elements (excluding the headline now handled separately)
+      gsap.from('[data-animate="fade-up"]', {
+        y: 28,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.9,
+        ease: 'power3.out'
+      })
+
+      // Character headline animation
+      const chars = gsap.utils.toArray<HTMLElement>('[data-headline-char]')
+      if (chars.length) {
+        // Set initial state (hidden below)
+        gsap.set(chars, { yPercent: 120, opacity: 0 })
+        // Keyframed bounce-in effect
+        gsap.to(chars, {
+          keyframes: [
+            { yPercent: 0, opacity: 1, ease: 'power3.out', duration: 0.6 },
+            { yPercent: -14, ease: 'power1.out', duration: 0.18 },
+            { yPercent: 0, ease: 'power2.out', duration: 0.34 }
+          ],
+          stagger: 0.04,
+          delay: 0.1
+        })
+      }
+    }, heroRef)
+
+    return () => ctx.revert()
   }, [])
 
   return (
     <div ref={heroRef}>
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col overflow-hidden">
-        {/* Unicorn Studio full-screen canvas */}
-        <UnicornStudio className="absolute inset-0 -z-10" height="100%" />
+  {/* Unicorn Studio full-screen canvas (updated project) */}
+  <UnicornStudio projectId="dDwz2YDuLTupUpCRhONo" className="absolute inset-0 -z-10" height="100%" />
         {/* Content anchored near bottom-left with generous whitespace */}
         <div className="container flex flex-1 items-end pb-24 md:pb-28">
           <div className="max-w-4xl space-y-8" data-animate-wrapper>
             <h1
-              data-animate="fade-up"
               className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]"
+              aria-label="The AI Firewall, For Agent Era"
             >
-              The AI Firewall,
-              <br />
-              For Agent Era
+              <span className="sr-only">The AI Firewall, For Agent Era</span>
+              <div className="space-y-2">
+                {/* Line 1 */}
+                <div className="flex flex-wrap">
+                  {['The', 'AI', 'Firewall,'].map((word, wIdx) => (
+                    <div
+                      key={wIdx}
+                      className="overflow-hidden mr-4 last:mr-0 pt-1 pb-1 -my-1"
+                      aria-hidden="true"
+                    >
+                      <div className="inline-flex">
+                        {Array.from(word).map((char, cIdx) => (
+                          <span
+                            key={cIdx}
+                            data-headline-char
+                            className="inline-block will-change-transform"
+                          >
+                            {char}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* Line 2 */}
+                <div className="flex flex-wrap">
+                  {['For', 'Agent', 'Era'].map((word, wIdx) => (
+                    <div
+                      key={wIdx}
+                      className="overflow-hidden mr-4 last:mr-0 pt-1 pb-1 -my-1"
+                      aria-hidden="true"
+                    >
+                      <div className="inline-flex">
+                        {Array.from(word).map((char, cIdx) => (
+                          <span
+                            key={cIdx}
+                            data-headline-char
+                            className="inline-block will-change-transform"
+                          >
+                            {char}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </h1>
             <p data-animate="fade-up" className="text-base md:text-lg text-muted-foreground max-w-2xl">
-              Inspect prompts & tool I/O locally. Enforce clear policies. Ship agents with confidence.
+              Inspect prompts & MCP tool calls locally.<br></br>
+              Enforce clear policies. Use AI with confidence.
             </p>
             <div data-animate="fade-up" className="pt-2">
               <Button size="lg" asChild className="shadow-lg shadow-primary/30">
