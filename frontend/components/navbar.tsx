@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from './ui/button'
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from './ui/navigation-menu'
 
@@ -15,8 +16,16 @@ export function Navbar() {
       <div className="container flex h-16 items-center">
         {/* Left: Logo */}
         <div className="flex items-center gap-2 font-semibold mr-6">
-          <Link href="#" className="flex items-center gap-2">
-            <span className="text-lg md:text-xl gradient-text">MCP Shield</span>
+          <Link href="#" className="flex items-center gap-2 group">
+            <Image
+              src="/MCPShield 3D Logo Transparent.png"
+              alt="MCP Shield 3D Logo"
+              width={36}
+              height={36}
+              priority
+              className="rounded-sm shadow-sm ring-1 ring-border/40 transition-transform group-hover:rotate-[6deg] group-hover:scale-105"
+            />
+            <span className="text-lg md:text-xl gradient-text tracking-tight">MCP Shield</span>
           </Link>
         </div>
 

@@ -14,7 +14,11 @@ export const metadata: Metadata = {
     url: 'https://jitha-microsoft.github.io/HACKATHON25-MCPShield',
     siteName: 'MCP Shield',
   },
-  icons: [{ rel: 'icon', url: '/favicon.ico' }],
+  // Add SVG favicon (modern browsers) and retain ICO as fallback
+  icons: [
+    { rel: 'icon', url: '/favicon.svg', type: 'image/svg+xml' },
+    { rel: 'icon', url: '/favicon.ico' },
+  ],
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
