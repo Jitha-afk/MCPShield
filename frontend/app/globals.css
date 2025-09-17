@@ -219,28 +219,81 @@ body {
   animation: fade-in-up 0.7s ease-out both;
 }
 
-/* Subtle attractor glow for primary CTA */
-@keyframes cta-glow-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(245 221 197 / 0.55), 0 0 0 0 rgba(245 221 197 / 0.25); }
-  40% { box-shadow: 0 0 0 4px rgba(245 221 197 / 0.0), 0 0 14px 4px rgba(245 221 197 / 0.35); }
-  70% { box-shadow: 0 0 0 2px rgba(245 221 197 / 0.15), 0 0 10px 3px rgba(245 221 197 / 0.25); }
-  100% { box-shadow: 0 0 0 0 rgba(245 221 197 / 0.0), 0 0 0 0 rgba(245 221 197 / 0.0); }
+/* Subtle constant attractor glow for primary CTA */
+@keyframes cta-glow-halo {
+  0% { opacity: 0.55; transform: scale(0.88); filter: blur(8px); }
+  45% { opacity: 0.9; transform: scale(1); filter: blur(10px); }
+  70% { opacity: 0.5; transform: scale(0.94); filter: blur(9px); }
+  100% { opacity: 0.55; transform: scale(0.88); filter: blur(8px); }
 }
 
 .cta-glow {
   position: relative;
   isolation: isolate;
-  animation: cta-glow-pulse 3.8s ease-in-out infinite;
-  will-change: box-shadow;
   transition: transform 0.35s ease, background-color 0.35s ease;
 }
-
+.cta-glow::before {
+  content: '';
+  position: absolute;
+  inset: -6px -10px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 40% 30%, rgba(245 221 197 / 0.55), rgba(245 221 197 / 0.05) 70%);
+  animation: cta-glow-halo 4.2s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform, opacity, filter;
+}
 .cta-glow:hover {
-  animation-play-state: paused;
-  transform: translateY(-1px) scale(1.03);
-  box-shadow: 0 0 0 2px rgba(245 221 197 / 0.5), 0 0 22px 6px rgba(245 221 197 / 0.4);
+  transform: translateY(-1px) scale(1.035);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cta-glow { animation: none; }
+  .cta-glow::before { animation: none; opacity: 0.55; }
+}
+
+/* Heartbeat variant for CTA (constant subtle pulse + expanding soft rings) */
+@keyframes cta-heartbeat-scale {
+  0% { transform: scale(1); }
+  10% { transform: scale(1.14); }
+  18% { transform: scale(1); }
+  30% { transform: scale(1.09); }
+  42% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+@keyframes cta-heartbeat-ring {
+  0% { opacity: 0.65; transform: scale(0.55); filter: blur(4px); }
+  28% { opacity: 0.15; transform: scale(1.35); filter: blur(12px); }
+  55% { opacity: 0; transform: scale(1.55); filter: blur(16px); }
+  100% { opacity: 0; transform: scale(1.55); }
+}
+@keyframes cta-heartbeat-ring-alt {
+  0% { opacity: 0.55; transform: scale(0.45); filter: blur(3px); }
+  38% { opacity: 0.12; transform: scale(1.45); filter: blur(13px); }
+  65% { opacity: 0; transform: scale(1.65); filter: blur(16px); }
+  100% { opacity: 0; transform: scale(1.65); }
+}
+.cta-heartbeat {
+  position: relative;
+  isolation: isolate;
+  animation: cta-heartbeat-scale 2.8s cubic-bezier(.66,.0,.34,1) infinite;
+  transition: transform 0.35s ease, background-color 0.35s ease;
+}
+.cta-heartbeat::before,
+.cta-heartbeat::after {
+  content: '';
+  position: absolute;
+  inset: -10px -18px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 40%, rgba(245 221 197 / 0.6), rgba(245 221 197 / 0) 72%);
+  pointer-events: none;
+  will-change: transform, opacity, filter;
+  mix-blend-mode: plus-lighter;
+}
+.cta-heartbeat::before { animation: cta-heartbeat-ring 2.8s ease-out infinite; }
+.cta-heartbeat::after { animation: cta-heartbeat-ring-alt 2.8s ease-out infinite 0.5s; }
+.cta-heartbeat:hover { transform: translateY(-1px) scale(1.05); }
+@media (prefers-reduced-motion: reduce) {
+  .cta-heartbeat { animation: none; }
+  .cta-heartbeat::before,
+  .cta-heartbeat::after { animation: none; opacity: 0.38; filter: blur(6px); }
 }
