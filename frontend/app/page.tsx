@@ -132,24 +132,34 @@ export default function HomePage() {
       </section>
   {/* Ad Section (between Hero and Testimonials) */}
   <AdSection />
+  {/* Demo Section (formerly Unicorn Studio Section) */}
+  <section
+        id="demo-visual"
+        aria-label="Demo Section"
+        className="relative h-screen flex flex-col overflow-hidden"
+      >
+        {/* Background Unicorn project */}
+        <div className="absolute inset-0 -z-10">
+          <div data-us-project="iX3Yko9qR358mDyrQg1J" style={{ width: '100%', height: '100vh' }} />
+          <script
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: `!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();`
+            }}
+          />
+        </div>
+        {/* Overlay Heading */}
+        <div className="pointer-events-none pt-10 pb-4 w-full text-center">
+          <h2 className="inline-block px-6 py-2 rounded-full bg-background/70 backdrop-blur text-xl md:text-2xl font-semibold tracking-tight shadow-sm">
+            See MCP Shield in action..
+          </h2>
+        </div>
+        {/* Spacer to preserve min-h-screen */}
+        <div className="flex-1" />
+      </section>
     <section aria-label="Testimonials" className="min-h-screen flex items-center">
         <div className="w-full">
           <TestimonialsMarquee />
-        </div>
-      </section>
-  <section id="features" className="container py-20 grid gap-12 md:gap-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
-        <h2 className="text-3xl md:text-4xl font-bold">What We Offer</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            { title: 'Inline Threat Detection', body: 'Analyze prompts & tool I/O for injection signatures using lightweight local models.' },
-            { title: 'Policy Engine', body: 'Declarative rules for blocking, redacting, or sandboxing suspicious flows.' },
-            { title: 'Copilot+ Ready', body: 'Optimized for upcoming NPU accelerated scenarios on Windows.' },
-          ].map(card => (
-            <div key={card.title} className="p-6 rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-              <h3 className="font-semibold mb-2">{card.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{card.body}</p>
-            </div>
-          ))}
         </div>
       </section>
 
