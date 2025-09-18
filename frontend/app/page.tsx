@@ -8,6 +8,7 @@ import UnicornStudio from '../components/unicorn-studio'
 import LoadingGate from '../components/loading-gate'
 import RoadmapAnimated from '../components/roadmap-animated'
 import AdSection from '../components/ad-section'
+import UnicornDemoSection from '../components/unicorn-demo-section'
 import { useState } from 'react'
 
 export default function HomePage() {
@@ -132,31 +133,7 @@ export default function HomePage() {
       </section>
   {/* Ad Section (between Hero and Testimonials) */}
   <AdSection />
-  {/* Demo Section (formerly Unicorn Studio Section) */}
-  <section
-        id="demo-visual"
-        aria-label="Demo Section"
-        className="relative h-screen flex flex-col overflow-hidden"
-      >
-        {/* Background Unicorn project */}
-        <div className="absolute inset-0 -z-10">
-          <div data-us-project="iX3Yko9qR358mDyrQg1J" style={{ width: '100%', height: '100vh' }} />
-          <script
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: `!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();`
-            }}
-          />
-        </div>
-        {/* Overlay Heading */}
-        <div className="pointer-events-none pt-10 pb-4 w-full text-center">
-          <h2 className="inline-block px-6 py-2 rounded-full bg-background/70 backdrop-blur text-xl md:text-2xl font-semibold tracking-tight shadow-sm">
-            See MCP Shield in action..
-          </h2>
-        </div>
-        {/* Spacer to preserve min-h-screen */}
-        <div className="flex-1" />
-      </section>
+  <UnicornDemoSection projectId="iX3Yko9qR358mDyrQg1J" mode="scale-down" />
     <section aria-label="Testimonials" className="min-h-screen flex items-center">
         <div className="w-full">
           <TestimonialsMarquee />
