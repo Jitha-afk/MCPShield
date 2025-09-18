@@ -137,19 +137,21 @@ export default function HomePage() {
           <TestimonialsMarquee />
         </div>
       </section>
-  <section id="features" className="container py-20 grid gap-12 md:gap-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
-        <h2 className="text-3xl md:text-4xl font-bold">What We Offer</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            { title: 'Inline Threat Detection', body: 'Analyze prompts & tool I/O for injection signatures using lightweight local models.' },
-            { title: 'Policy Engine', body: 'Declarative rules for blocking, redacting, or sandboxing suspicious flows.' },
-            { title: 'Copilot+ Ready', body: 'Optimized for upcoming NPU accelerated scenarios on Windows.' },
-          ].map(card => (
-            <div key={card.title} className="p-6 rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-              <h3 className="font-semibold mb-2">{card.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{card.body}</p>
-            </div>
-          ))}
+  <section id="features" className="container py-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
+        <div className="space-y-8">
+          <h2 className="text-3xl md:text-4xl font-bold">What We Offer</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: 'Inline Threat Detection', body: 'Analyze prompts & tool I/O for injection signatures using lightweight local models.' },
+              { title: 'Policy Engine', body: 'Declarative rules for blocking, redacting, or sandboxing suspicious flows.' },
+              { title: 'Copilot+ Ready', body: 'Optimized for upcoming NPU accelerated scenarios on Windows.' },
+            ].map(card => (
+              <div key={card.title} className="p-6 rounded-xl border border-border bg-card text-card-foreground shadow-sm">
+                <h3 className="font-semibold mb-2">{card.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{card.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -191,7 +193,7 @@ export default function HomePage() {
           Spin up a local adapter and see policy enforcement on sample tools.
         </p>
         <div className="flex gap-3">
-          <Button asChild><a href="/quickstart">Quickstart</a></Button>
+          <Button asChild><a href="https://github.com/Jitha-afk/MCPShield">Quick Start</a></Button>
         </div>
       </section>
 
