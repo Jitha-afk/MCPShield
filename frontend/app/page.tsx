@@ -9,6 +9,7 @@ import LoadingGate from '../components/loading-gate'
 import RoadmapAnimated from '../components/roadmap-animated'
 import AdSection from '../components/ad-section'
 import UnicornDemoSection from '../components/unicorn-demo-section'
+import UnicornDemoLetterboxed from '../components/unicorn-demo-letterboxed'
 import { useState } from 'react'
 
 export default function HomePage() {
@@ -133,7 +134,8 @@ export default function HomePage() {
       </section>
   {/* Ad Section (between Hero and Testimonials) */}
   <AdSection />
-  <UnicornDemoSection projectId="iX3Yko9qR358mDyrQg1J" mode="scale-down" />
+  {/* Letterboxed variant (1920x1080 contained within viewport) */}
+  <UnicornDemoLetterboxed projectId="iX3Yko9qR358mDyrQg1J" />
     <section aria-label="Testimonials" className="min-h-screen flex items-center">
         <div className="w-full">
           <TestimonialsMarquee />
