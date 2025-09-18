@@ -25,7 +25,7 @@ export default function LoadingGate({
   ready,
   timeoutMs = 10000,
   // Minimum display time now 0.5s for snappier entry
-  minDisplayMs = 900,
+  minDisplayMs = 1250,
   className = "",
   onHide
 }: LoadingGateProps) {

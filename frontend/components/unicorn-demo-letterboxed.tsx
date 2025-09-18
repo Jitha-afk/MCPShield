@@ -71,7 +71,12 @@ export default function UnicornDemoLetterboxed({
   useEffect(() => { loadUnicornScript() }, [])
 
   return (
-    <section id="demo-visual" aria-label="Demo Section" className={`relative h-screen w-full overflow-hidden flex flex-col ${className}`}>
+    <section
+      id="demo-visual"
+      aria-label="Demo Section"
+      className={`relative h-screen w-screen overflow-hidden flex flex-col ${className}`}
+      style={{ width: '100vw' }}
+    >
       {/* Bars (letterbox/pillarbox) handled by background color of section */}
       <div ref={stageRef} className={`absolute inset-0 flex items-center justify-center ${barColorClass}`}> 
         <div

@@ -9,6 +9,7 @@ import LoadingGate from '../components/loading-gate'
 import RoadmapAnimated from '../components/roadmap-animated'
 import AdSection from '../components/ad-section'
 import UnicornDemoSection from '../components/unicorn-demo-section'
+import ButWaitSection from '../components/but-wait'
 import { useState } from 'react'
 
 export default function HomePage() {
@@ -135,11 +136,14 @@ export default function HomePage() {
   <AdSection />
   {/* Simple 100vh full-bleed demo section (reverted from letterboxed) */}
   <UnicornDemoSection projectId="iX3Yko9qR358mDyrQg1J" />
-    <section aria-label="Testimonials" className="min-h-screen flex items-center">
-        <div className="w-full">
+    <section aria-label="Testimonials" className="py-24">
+        <div className="w-full max-w-7xl mx-auto">
           <TestimonialsMarquee />
         </div>
       </section>
+
+    {/* Interstitial animated section now sits directly after testimonials for better flow */}
+    <ButWaitSection />
 
   <section id="how-it-works" className="container py-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">How It Works</h2>
