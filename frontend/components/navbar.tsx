@@ -50,14 +50,14 @@ export function Navbar() {
           <Button
             asChild
             size="sm"
-            className="animate-bounce bg-primary text-primary-foreground shadow-lg shadow-primary/30 hover:bg-primary/90"
+            className="animate-bounce bg-[#F5DDC5] text-black shadow-lg shadow-primary/30 hover:bg-[#f3cfa3]"
           >
             <Link
               href="https://innovationstudio.microsoft.com/hackathons/hackathon2025/project/95945"
               target="_blank"
               rel="noopener noreferrer"
             >
-              💖 the Project
+            💖 the Hackathon
             </Link>
           </Button>
           <Button
