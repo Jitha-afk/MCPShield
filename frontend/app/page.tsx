@@ -10,6 +10,7 @@ import RoadmapAnimated from '../components/roadmap-animated'
 import AdSection from '../components/ad-section'
 import UnicornDemoSection from '../components/unicorn-demo-section'
 import ButWaitSection from '../components/but-wait'
+import AzFoundrySection from '../components/az-foundry-section'
 import { useState } from 'react'
 
 export default function HomePage() {
@@ -144,6 +145,9 @@ export default function HomePage() {
 
     {/* Interstitial animated section now sits directly after testimonials for better flow */}
     <ButWaitSection />
+
+    {/* Az Foundry background section */}
+    <AzFoundrySection />
 
   <section id="how-it-works" className="container py-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">How It Works</h2>
