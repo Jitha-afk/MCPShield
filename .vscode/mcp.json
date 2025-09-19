@@ -3,7 +3,7 @@
 		"context7": {
       	"type": "stdio",
       	"command": "npx",
-      	"args": ["-y", "@upstash/context7-mcp", "--api-key", "YOUR_API_KEY"]
+      	"args": ["-y", "@upstash/context7-mcp"]
     	},	
 		"shadcn-ui-mcp-server": {
 			"type": "stdio",

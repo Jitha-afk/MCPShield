@@ -127,7 +127,7 @@ export default function HomePage() {
             </p>
             <div data-animate="fade-up" className="pt-2">
               <Button size="lg" asChild className="shadow-lg shadow-primary/30">
-                <a href="#demo">Try it out</a>
+                <a href="#try">Try it out</a>
               </Button>
             </div>
           </div>
@@ -136,7 +136,9 @@ export default function HomePage() {
   {/* Ad Section (between Hero and Testimonials) */}
   <AdSection />
   {/* Simple 100vh full-bleed demo section (reverted from letterboxed) */}
-  <UnicornDemoSection projectId="iX3Yko9qR358mDyrQg1J" />
+  <section id="demo" className="relative min-h-screen">
+    <UnicornDemoSection projectId="iX3Yko9qR358mDyrQg1J" />
+  </section>
     <section aria-label="Testimonials" className="py-24">
         <div className="w-full max-w-7xl mx-auto">
           <TestimonialsMarquee />
@@ -181,13 +183,15 @@ export default function HomePage() {
         </div>
       </section>
 
-  <section id="demo" className="container py-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Try MCP Shield</h2>
+  <section id="try" className="container py-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
+    <h2 className="text-3xl md:text-4xl font-bold mb-4">Try MCP Shield</h2>
         <p className="text-sm md:text-base text-muted-foreground mb-6">
           Spin up a local adapter and see policy enforcement on sample tools.
         </p>
         <div className="flex gap-3">
-          <Button asChild><a href="/quickstart">Quickstart</a></Button>
+          <Button asChild>
+            <a href="https://github.com/jitha_microsoft/HACKATHON25-MCPShield/" target="_blank" rel="noopener noreferrer">Quickstart</a>
+          </Button>
         </div>
       </section>
 

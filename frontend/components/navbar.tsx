@@ -5,7 +5,7 @@ import { Button } from './ui/button'
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from './ui/navigation-menu'
 
 const navItems = [
-  { href: '#features', label: 'Features' },
+  { href: '#demo', label: 'Features' },
   { href: '#how-it-works', label: 'How It Works' },
   { href: '#why', label: 'Why MCP Shield' },
   { href: '#roadmap', label: 'Roadmap' },

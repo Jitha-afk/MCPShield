@@ -42,17 +42,14 @@ export default function AzFoundrySection() {
       {/* Background project canvas (sized by inline style to preserve layout expectations) */}
       <div
         ref={containerRef}
-        data-us-project="tQf6tgqBOB7knqciUPJk"
+        data-us-project="XZ9dqEijk6MOfR3Kmx5j"
         style={{ width: '1440px', height: '900px' }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
       />
       <div className="absolute inset-0 -z-10 bg-background" />
       <div className="absolute inset-0 -z-0 opacity-90" />
       <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/20 to-background" />
-      {/* Minimal overlay content (optional) */}
-      <div className="relative h-full flex items-end justify-center pb-10">
-        <p className="text-xs tracking-wider uppercase text-muted-foreground/50">Az Foundry</p>
-      </div>
+      {/* Overlay removed per request */}
     </section>
   )
 }

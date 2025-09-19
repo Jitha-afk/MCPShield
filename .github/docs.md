@@ -139,3 +139,53 @@ Created collaboratively during iterative debugging of hero animation (Sept 2025)
 
 ---
 If you add new animation variants, append a dated subsection under **Future Refinements**.
+
+---
+
+# Unicorn Studio Embed Learnings (2025-09-19)
+
+## Context
+Added a full-screen Unicorn Studio visual section between `AdSection` and the testimonials in `frontend/app/page.tsx`. A `UnicornStudio` React component already powered the hero background canvas. Reusing it for a second standalone visual did not render the new project.
+
+## Symptom
+Second section stayed blank (no visual) though the container div existed in the DOM.
+
+## Likely Root Cause
+The external library runs `UnicornStudio.init()` once and sets `window.UnicornStudio.isInitialized = true`. It does not appear to re-scan the DOM for additional `[data-us-project]` nodes added later. Our wrapper avoided a second `init()` call, so the new container was never processed.
+
+## Implemented Fix
+Inserted the raw vendor snippet exactly (div + inline self-loading script) so ordering guaranteed: container first, then script load + init.
+
+Raw HTML (original):
+```html
+<div data-us-project="iX3Yko9qR358mDyrQg1J" style="width:1920px; height:1080px"></div>
+<script type="text/javascript">!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();</script>
+```
+
+React translation used `dangerouslySetInnerHTML` for the script while preserving the project div.
+
+## Why It Worked
+- Ensured script executes after container is present.
+- Allowed a fresh `init()` when the global was not yet defined, or reused existing global while still matching expected original embed flow.
+
+## Trade-offs
+- Multiple inline loaders could add redundant script tags (network cached, but DOM noise).
+- Fixed 1920×1080 sizing not responsive; may overflow small viewports.
+- Inline script complicates future CSP enforcement.
+
+## Future Improvement Plan
+1. Create singleton loader Promise.
+2. Build `scanForProjects()` util to call after mounting new project divs.
+3. Replace raw inline script with `<UnicornProject />` component that forces a rescan.
+4. Make canvas responsive using aspect-ratio or scale wrapper.
+
+## Interim Embed Checklist
+- [ ] Container div rendered before loader script.
+- [ ] Only one (or intentionally deduped) global script insertion.
+- [ ] Provide responsive constraints or intentional fixed layout.
+- [ ] Consider re-init logic if adding further instances.
+
+## Code Location
+Implemented in `frontend/app/page.tsx` under the comment: `Unicorn Studio Section (inserted between Ad and Testimonials)`.
+
+---
