@@ -1,7 +1,9 @@
 "use client";
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { cn } from '../lib/utils';
 import { Card, CardContent } from './ui/card';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 interface Testimonial {
   name: string;
@@ -40,7 +42,7 @@ function Row({ testimonials, direction }: { testimonials: Testimonial[]; directi
   // Duplicate list so translateX -50% loops seamlessly
   const list = [...testimonials, ...testimonials];
   return (
-    <div className="group relative overflow-hidden">
+    <div className="group relative overflow-hidden testimonial-row">
       <div
         className={cn(
           'flex w-[200%] gap-4 py-4',
@@ -51,10 +53,12 @@ function Row({ testimonials, direction }: { testimonials: Testimonial[]; directi
         {list.map((t, i) => (
           <Card
             key={i}
-            className="w-72 flex-shrink-0 transition-shadow hover:shadow-md hover:ring-1 hover:ring-border/60 bg-white dark:bg-[#21293c] text-card-foreground dark:text-card-foreground"
+            className={cn(
+              'testimonial-card opacity-0 w-72 flex-shrink-0 transition-shadow hover:shadow-md hover:ring-1 hover:ring-border bg-card text-card-foreground border border-border will-change-transform'
+            )}
           >
             <CardContent className="p-4">
-              <p className="text-sm leading-relaxed mb-3 text-muted-foreground dark:text-muted-foreground">“{t.quote}”</p>
+              <p className="text-sm leading-relaxed mb-3 text-muted-foreground">“{t.quote}”</p>
               <div className="text-xs font-medium">
                 <span>{t.name}</span>
                 <span className="text-muted-foreground"> · {t.role}</span>
@@ -71,11 +75,41 @@ function Row({ testimonials, direction }: { testimonials: Testimonial[]; directi
 }
 
 export default function TestimonialsMarquee() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      const rows = gsap.utils.toArray<HTMLElement>('.testimonial-row');
+      rows.forEach(row => {
+        const cards = row.querySelectorAll<HTMLElement>('.testimonial-card');
+        if (!cards.length) return;
+        gsap.set(cards, { y: 100 });
+        gsap.to(cards, {
+          y: 0,
+          opacity: 1,
+          duration: 0.65,
+          ease: 'power3.out',
+          stagger: { each: 0.06, from: 'start' },
+          overwrite: 'auto',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            once: true,
+            // prevent any premature rendering
+            immediateRender: false,
+          },
+        });
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative py-24 select-none" id="testimonials">
+    <section ref={sectionRef} className="relative py-24 select-none" id="testimonials">
       <div className="container mb-10">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">What builders are saying</h2>
-        <p className="text-muted-foreground mt-2 max-w-2xl text-sm md:text-base">Adopters across security, platform, and AI teams use MCP Shield to safely accelerate agent-driven products.</p>
+        <p className="text-muted-foreground mt-2 max-w-2xl text-sm md:text-base">Adopters across security, platform, and AI teams use MCP Shield to safely<br></br>accelerate agent-driven products.</p>
       </div>
       <div className="space-y-6">
         <Row testimonials={testimonialsRowA} direction="left" />

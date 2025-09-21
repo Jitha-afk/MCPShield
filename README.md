@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center" style="margin-bottom: 2em;">
   
   <img src="assets/mcp-shield-banner.gif" alt="MCP Shield" loop=infinite/>
@@ -117,4 +118,11 @@ If you would like to collaborate, open an issue or reach out during the hackatho
 - Contributors to the Model Context Protocol specification for shaping the interoperability surface MCP Shield watches.
 - Open-source design systems that accelerated the landing experience.
 - GitHub Pages and the Microsoft Global Hackathon organizers for the infrastructure and stage to bring MCP Shield to life.
+=======
+# HACKATHON25-MCPSentinel
+
+[![Deploy MCPShield Landing to GitHub Pages](https://github.com/Jitha-afk/MCPShield/actions/workflows/deploy-pages.yml/badge.svg?branch=pages)](https://github.com/Jitha-afk/MCPShield/actions/workflows/deploy-pages.yml)
+
+AI firewall for the agent era!
+>>>>>>> dd2d90f8a72e319ba5230ab5b4c241af4dc18908
 

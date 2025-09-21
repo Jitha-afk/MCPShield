@@ -3,111 +3,172 @@
 @tailwind utilities;
 
 /* Font Import */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..700&display=swap');
 
 /* Updated design token sets */
 :root {
-  --background: #f4f4f8;
-  --foreground: #19171c;
+  --background: #ffffff;
+  --foreground: #333333;
   --card: #ffffff;
-  --card-foreground: #19171c;
+  --card-foreground: #333333;
   --popover: #ffffff;
-  --popover-foreground: #19171c;
-  --primary: #d263a7;
+  --popover-foreground: #333333;
+  --primary: #3b82f6;
   --primary-foreground: #ffffff;
-  --secondary: #2a3851;
-  --secondary-foreground: #ffffff;
-  --muted: #e5e4e7;
-  --muted-foreground: #75717a;
-  --accent: #e9ab5c;
-  --accent-foreground: #ffffff;
-  --destructive: #f09443;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #4b5563;
+  --muted: #f9fafb;
+  --muted-foreground: #6b7280;
+  --accent: #e0f2fe;
+  --accent-foreground: #1e3a8a;
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #e5e4e7;
-  --input: #e5e4e7;
-  --ring: #d263a7;
-  --chart-1: #d263a7;
-  --chart-2: #e9ab5c;
-  --chart-3: #81b898;
-  --chart-4: #2a3851;
-  --chart-5: #4673ba;
-  --sidebar: #ffffff;
-  --sidebar-foreground: #19171c;
-  --sidebar-primary: #d263a7;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #3b82f6;
+  --chart-1: #3b82f6;
+  --chart-2: #2563eb;
+  --chart-3: #1d4ed8;
+  --chart-4: #1e40af;
+  --chart-5: #1e3a8a;
+  --sidebar: #f9fafb;
+  --sidebar-foreground: #333333;
+  --sidebar-primary: #3b82f6;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #e5e4e7;
-  --sidebar-accent-foreground: #19171c;
-  --sidebar-border: #e5e4e7;
-  --sidebar-ring: #d263a7;
-  --font-sans: 'Space Grotesk', sans-serif;
-  --font-serif: Georgia, serif;
-  --font-mono: monospace;
-  --radius: 0.5rem;
-  --shadow-2xs: 0px 2px 8px -2px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0px 2px 8px -2px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0px 2px 8px -2px hsl(0 0% 0% / 0.10), 0px 1px 2px -3px hsl(0 0% 0% / 0.10);
-  --shadow: 0px 2px 8px -2px hsl(0 0% 0% / 0.10), 0px 1px 2px -3px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0px 2px 8px -2px hsl(0 0% 0% / 0.10), 0px 2px 4px -3px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0px 2px 8px -2px hsl(0 0% 0% / 0.10), 0px 4px 6px -3px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0px 2px 8px -2px hsl(0 0% 0% / 0.10), 0px 8px 10px -3px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0px 2px 8px -2px hsl(0 0% 0% / 0.25);
-  --tracking-normal: 0px;
+  --sidebar-accent: #e0f2fe;
+  --sidebar-accent-foreground: #1e3a8a;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #3b82f6;
+  --font-sans: 'Open Sans', ui-sans-serif, sans-serif, system-ui;
+  --font-serif: Geist, ui-sans-serif, sans-serif, system-ui;
+  --font-mono: Geist Mono, ui-monospace, monospace;
+  --radius: 0.375rem;
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --tracking-normal: 0.025em;
   --spacing: 0.25rem;
 }
 
 .dark {
-  --background: #1a202f;
-  --foreground: #f8f8fc;
-  --card: #21293c;
-  --card-foreground: #f8f8fc;
-  --popover: #21293c;
-  --popover-foreground: #f8f8fc;
-  --primary: #d263a7;
+  --background: #000000;
+  --foreground: #e5e5e5;
+  --card: #262626;
+  --card-foreground: #e5e5e5;
+  --popover: #262626;
+  --popover-foreground: #e5e5e5;
+  --primary: #3b82f6;
   --primary-foreground: #ffffff;
-  --secondary: #4673ba;
-  --secondary-foreground: #19171c;
-  --muted: #2a3851;
-  --muted-foreground: #a5a1aa;
-  --accent: #e9ab5c;
-  --accent-foreground: #ffffff;
-  --destructive: #7f4b1d;
+  --secondary: #262626;
+  --secondary-foreground: #e5e5e5;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #ee964b;
+  --accent-foreground: #bfdbfe;
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #2a3851;
-  --input: #2a3851;
-  --ring: #d263a7;
-  --chart-1: #d263a7;
-  --chart-2: #e9ab5c;
-  --chart-3: #81b898;
-  --chart-4: #4673ba;
-  --chart-5: #e0f60a;
-  --sidebar: #1a202f;
-  --sidebar-foreground: #f8f8fc;
-  --sidebar-primary: #d263a7;
+  --border: #404040;
+  --input: #404040;
+  --ring: #3b82f6;
+  --chart-1: #60a5fa;
+  --chart-2: #f87171;
+  --chart-3: #2563eb;
+  --chart-4: #b91c1c;
+  --chart-5: #fbbf24;
+  --sidebar: #171717;
+  --sidebar-foreground: #e5e5e5;
+  --sidebar-primary: #3b82f6;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #2a3851;
-  --sidebar-accent-foreground: #f8f8fc;
-  --sidebar-border: #2a3851;
-  --sidebar-ring: #d263a7;
-  --font-sans: 'Space Grotesk', sans-serif;
-  --font-serif: Georgia, serif;
-  --font-mono: monospace;
-  --radius: 0.5rem;
-  --shadow-2xs: 0px 4px 12px -4px hsl(0 0% 0% / 0.13);
-  --shadow-xs: 0px 4px 12px -4px hsl(0 0% 0% / 0.13);
-  --shadow-sm: 0px 4px 12px -4px hsl(0 0% 0% / 0.25), 0px 1px 2px -5px hsl(0 0% 0% / 0.25);
-  --shadow: 0px 4px 12px -4px hsl(0 0% 0% / 0.25), 0px 1px 2px -5px hsl(0 0% 0% / 0.25);
-  --shadow-md: 0px 4px 12px -4px hsl(0 0% 0% / 0.25), 0px 2px 4px -5px hsl(0 0% 0% / 0.25);
-  --shadow-lg: 0px 4px 12px -4px hsl(0 0% 0% / 0.25), 0px 4px 6px -5px hsl(0 0% 0% / 0.25);
-  --shadow-xl: 0px 4px 12px -4px hsl(0 0% 0% / 0.25), 0px 8px 10px -5px hsl(0 0% 0% / 0.25);
-  --shadow-2xl: 0px 4px 12px -4px hsl(0 0% 0% / 0.63);
+  --sidebar-accent: #ee964b;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #404040;
+  --sidebar-ring: #3b82f6;
+  --font-sans: Geist, ui-sans-serif, sans-serif, system-ui;
+  --font-serif: Geist, ui-sans-serif, sans-serif, system-ui;
+  --font-mono: Geist Mono, ui-monospace, monospace;
+  --radius: 0.375rem;
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+
+  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
+  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
+  --tracking-normal: var(--tracking-normal);
+  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
+  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
+  --tracking-widest: calc(var(--tracking-normal) + 0.1em);
 }
 
 body {
+  font-family: 'Open Sans', ui-sans-serif, sans-serif, system-ui;
   letter-spacing: var(--tracking-normal);
 }
 
 .gradient-text {
-  background: linear-gradient(90deg,#d263a7,#e9ab5c,#4673ba);
+  background: linear-gradient(90deg,#e9ab5c,#4673ba);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -141,3 +202,100 @@ body {
 .testimonial-card-shadow {
   box-shadow: var(--shadow-sm);
 }
+
+/* Loading gate subtle animations */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3.2s linear infinite;
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s ease-out both;
+}
+
+/* Subtle constant attractor glow for primary CTA */
+@keyframes cta-glow-halo {
+  0% { opacity: 0.55; transform: scale(0.88); filter: blur(8px); }
+  45% { opacity: 0.9; transform: scale(1); filter: blur(10px); }
+  70% { opacity: 0.5; transform: scale(0.94); filter: blur(9px); }
+  100% { opacity: 0.55; transform: scale(0.88); filter: blur(8px); }
+}
+
+.cta-glow {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.35s ease, background-color 0.35s ease;
+}
+.cta-glow::before {
+  content: '';
+  position: absolute;
+  inset: -6px -10px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 40% 30%, rgba(245 221 197 / 0.55), rgba(245 221 197 / 0.05) 70%);
+  animation: cta-glow-halo 4.2s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform, opacity, filter;
+}
+.cta-glow:hover {
+  transform: translateY(-1px) scale(1.035);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-glow::before { animation: none; opacity: 0.55; }
+}
+
+/* Heartbeat variant for CTA (constant subtle pulse + expanding soft rings) */
+@keyframes cta-heartbeat-scale {
+  0% { transform: scale(1); }
+  10% { transform: scale(1.14); }
+  18% { transform: scale(1); }
+  30% { transform: scale(1.09); }
+  42% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+@keyframes cta-heartbeat-ring {
+  0% { opacity: 0.65; transform: scale(0.55); filter: blur(4px); }
+  28% { opacity: 0.15; transform: scale(1.35); filter: blur(12px); }
+  55% { opacity: 0; transform: scale(1.55); filter: blur(16px); }
+  100% { opacity: 0; transform: scale(1.55); }
+}
+@keyframes cta-heartbeat-ring-alt {
+  0% { opacity: 0.55; transform: scale(0.45); filter: blur(3px); }
+  38% { opacity: 0.12; transform: scale(1.45); filter: blur(13px); }
+  65% { opacity: 0; transform: scale(1.65); filter: blur(16px); }
+  100% { opacity: 0; transform: scale(1.65); }
+}
+.cta-heartbeat {
+  position: relative;
+  isolation: isolate;
+  animation: cta-heartbeat-scale 2.8s cubic-bezier(.66,.0,.34,1) infinite;
+  transition: transform 0.35s ease, background-color 0.35s ease;
+}
+.cta-heartbeat::before,
+.cta-heartbeat::after {
+  content: '';
+  position: absolute;
+  inset: -10px -18px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 40%, rgba(245 221 197 / 0.6), rgba(245 221 197 / 0) 72%);
+  pointer-events: none;
+  will-change: transform, opacity, filter;
+  mix-blend-mode: plus-lighter;
+}
+.cta-heartbeat::before { animation: cta-heartbeat-ring 2.8s ease-out infinite; }
+.cta-heartbeat::after { animation: cta-heartbeat-ring-alt 2.8s ease-out infinite 0.5s; }
+.cta-heartbeat:hover { transform: translateY(-1px) scale(1.05); }
+@media (prefers-reduced-motion: reduce) {
+  .cta-heartbeat { animation: none; }
+  .cta-heartbeat::before,
+  .cta-heartbeat::after { animation: none; opacity: 0.38; filter: blur(6px); }
+}
+
