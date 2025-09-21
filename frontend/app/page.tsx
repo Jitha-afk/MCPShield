@@ -151,17 +151,29 @@ export default function HomePage() {
     {/* Az Foundry background section */}
     <AzFoundrySection />
 
-  <section id="try" className="container py-20 scroll-mt-20 min-h-[50vh] flex flex-col justify-center">
-    <h2 className="text-3xl md:text-4xl font-bold mb-4">Try MCP Shield</h2>
-        <p className="text-sm md:text-base text-muted-foreground mb-6">
-          Spin up a local adapter and see policy enforcement on sample tools.
-        </p>
-        <div className="flex gap-3">
-          <Button asChild>
-            <a href="https://github.com/jitha_microsoft/HACKATHON25-MCPShield/" target="_blank" rel="noopener noreferrer">Quickstart</a>
-          </Button>
-        </div>
-      </section>
+
+  <section
+    id="try"
+    className="relative py-20 scroll-mt-20 min-h-[50vh] flex items-center overflow-hidden"
+  >
+    <UnicornStudio
+      projectId="H1zbLl2X0nwOiF0Tobqg"
+      height="100%"
+      className="absolute inset-0 -z-10 h-full w-full"
+    />
+    <div className="container relative flex flex-col justify-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">Try MCP Shield</h2>
+      <p className="text-sm md:text-base text-muted-foreground mb-6">
+        Spin up a local adapter and see policy enforcement on sample tools.
+      </p>
+      <div className="flex gap-3">
+        <Button asChild>
+          <a href="https://github.com/jitha_microsoft/HACKATHON25-MCPShield/" target="_blank" rel="noopener noreferrer">Quickstart</a>
+        </Button>
+      </div>
+    </div>
+  </section>
+
 
   <section id="roadmap" className="container py-24 scroll-mt-20 min-h-screen flex flex-col justify-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-10">Roadmap</h2>
