@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div align="center" style="margin-bottom: 2em;">
   
   <img src="assets/mcp-shield-banner.gif" alt="MCP Shield" loop=infinite/>
