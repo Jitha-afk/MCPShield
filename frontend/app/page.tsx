@@ -151,49 +151,29 @@ export default function HomePage() {
     {/* Az Foundry background section */}
     <AzFoundrySection />
 
-  <section id="how-it-works" className="container py-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">How It Works</h2>
-        <ol className="grid gap-4 md:grid-cols-3">
-          <li className="p-5 rounded-xl border border-border/60 bg-card/50">
-            <div className="font-semibold mb-1">Step 1: Plug in</div>
-            <p className="text-sm text-muted-foreground">Add a small adapter on your MCP tool bus.</p>
-          </li>
-          <li className="p-5 rounded-xl border border-border/60 bg-card/50">
-            <div className="font-semibold mb-1">Step 2: Inspect</div>
-            <p className="text-sm text-muted-foreground">Traffic is scanned and scored in real time.</p>
-          </li>
-          <li className="p-5 rounded-xl border border-border/60 bg-card/50">
-            <div className="font-semibold mb-1">Step 3: Enforce</div>
-            <p className="text-sm text-muted-foreground">Policies block, redact, or sandbox. Logged for audit.</p>
-          </li>
-        </ol>
-      </section>
 
-  <section id="why" className="container py-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">Why MCP Shield</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-5 rounded-xl border border-border/60 bg-card/50">
-            <h3 className="font-semibold mb-1">Local-first</h3>
-            <p className="text-sm text-muted-foreground">Keep sensitive data on-device. No vendor lock-in.</p>
-          </div>
-          <div className="p-5 rounded-xl border border-border/60 bg-card/50">
-            <h3 className="font-semibold mb-1">Transparent control</h3>
-            <p className="text-sm text-muted-foreground">Rules + lightweight models. Tunable and debuggable.</p>
-          </div>
-        </div>
-      </section>
+  <section
+    id="try"
+    className="relative py-20 scroll-mt-20 min-h-[50vh] flex items-center overflow-hidden"
+  >
+    <UnicornStudio
+      projectId="H1zbLl2X0nwOiF0Tobqg"
+      height="100%"
+      className="absolute inset-0 -z-10 h-full w-full"
+    />
+    <div className="container relative flex flex-col justify-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">Try MCP Shield</h2>
+      <p className="text-sm md:text-base text-muted-foreground mb-6">
+        Spin up a local adapter and see policy enforcement on sample tools.
+      </p>
+      <div className="flex gap-3">
+        <Button asChild>
+          <a href="https://github.com/jitha_microsoft/HACKATHON25-MCPShield/" target="_blank" rel="noopener noreferrer">Quickstart</a>
+        </Button>
+      </div>
+    </div>
+  </section>
 
-  <section id="try" className="container py-20 scroll-mt-20 min-h-screen flex flex-col justify-center">
-    <h2 className="text-3xl md:text-4xl font-bold mb-4">Try MCP Shield</h2>
-        <p className="text-sm md:text-base text-muted-foreground mb-6">
-          Spin up a local adapter and see policy enforcement on sample tools.
-        </p>
-        <div className="flex gap-3">
-          <Button asChild>
-            <a href="https://github.com/jitha_microsoft/HACKATHON25-MCPShield/" target="_blank" rel="noopener noreferrer">Quickstart</a>
-          </Button>
-        </div>
-      </section>
 
   <section id="roadmap" className="container py-24 scroll-mt-20 min-h-screen flex flex-col justify-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-10">Roadmap</h2>

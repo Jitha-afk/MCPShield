@@ -11,6 +11,23 @@ interface RoadmapPhase {
   status?: 'done' | 'in-progress' | 'upcoming';
 }
 
+type RoadmapStatus = NonNullable<RoadmapPhase['status']>;
+const STATUS_STYLES: Record<RoadmapStatus, { badge: string; label: string }> = {
+  done: {
+    badge: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+    label: 'Live'
+  },
+  'in-progress': {
+    badge: 'bg-amber-500/15 text-amber-400 border-amber-500/30 animate-pulse',
+    label: 'In Progress'
+  },
+  upcoming: {
+    badge: 'bg-muted/40 text-muted-foreground border-border/70 animate-pulse',
+    label: 'Planned'
+  }
+};
+const DEFAULT_STATUS: RoadmapStatus = 'upcoming';
+
 export interface RoadmapAnimatedProps {
   phases?: RoadmapPhase[];
   className?: string;
@@ -27,13 +44,13 @@ const DEFAULT_PHASES: RoadmapPhase[] = [
     label: 'Alpha',
     title: 'Detection & Control',
     description: 'Local prompt stream inspection & rule based blocking.',
-    status: 'in-progress'
+    status: 'done'
   },
   {
     label: 'Beta',
     title: 'Adaptive & Integrated',
     description: 'Adaptive and built into Windows service, telemetry opt-in.',
-    status: 'upcoming'
+    status: 'in-progress'
   },
   {
     label: 'GA',
@@ -89,11 +106,8 @@ export default function RoadmapAnimated({
   return (
     <div ref={rootRef} className={cn("grid gap-6 md:grid-cols-3", className)}>
       {phases.map((p, idx) => {
-        const stateBadge = p.status === 'done'
-          ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
-          : p.status === 'in-progress'
-            ? 'bg-amber-500/15 text-amber-400 border-amber-500/30 animate-pulse'
-            : 'bg-muted/40 text-muted-foreground border-border/70 animate-pulse';
+        const statusKey = (p.status ?? DEFAULT_STATUS) as RoadmapStatus;
+        const { badge, label } = STATUS_STYLES[statusKey];
         return (
           <Card
             key={p.label}
@@ -104,8 +118,8 @@ export default function RoadmapAnimated({
             <CardHeader className="space-y-2">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-mono tracking-wide uppercase text-primary/90">{p.label}</span>
-                <span className={cn('text-[10px] px-1.5 py-0.5 rounded-md border font-medium', stateBadge)}>
-                  {p.status?.replace('-', ' ')}
+                <span className={cn('text-[10px] px-1.5 py-0.5 rounded-md border font-medium', badge)}>
+                  {label}
                 </span>
               </div>
               <CardTitle className="text-sm md:text-base">{p.title}</CardTitle>

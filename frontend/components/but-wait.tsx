@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 /**
  * 50vh interstitial section appearing after testimonials.
- * Animates each character of the phrase "BUT WAIT! WHATS THIS??" into view
+ * Animates each character of the phrase "BUT WAIT, WHAT IS THIS??" into view
  * when the section scrolls into ~60% of the viewport, using GSAP + ScrollTrigger.
  */
 export default function ButWaitSection() {
@@ -55,7 +55,7 @@ export default function ButWaitSection() {
 
   // Two-line layout (grouped words)
   const lineGroups: string[][] = [
-    ['BUT', 'WAIT!'],
+    ['BUT', 'WAIT,'],
     ['WHAT IS', 'THIS??']
   ]
 
@@ -86,3 +86,5 @@ export default function ButWaitSection() {
     </section>
   )
 }
+
+
