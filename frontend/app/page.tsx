@@ -158,7 +158,7 @@ export default function HomePage() {
     className="relative py-20 scroll-mt-20 min-h-[50vh] flex items-center overflow-hidden"
   >
     <UnicornStudio
-      projectId="H1zbLl2X0nwOiF0Tobqg"
+      projectId="qnogMT6BA30qWGK6cU8o"
       height="100%"
       className="absolute inset-0 -z-10 h-full w-full"
     />
